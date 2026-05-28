@@ -635,10 +635,10 @@
     </div>
     <h1>Mis<br><em>Proyectos</em></h1>
     <div class="subtitle">
-      // <b>recetas</b> · cosmos · código · <b>utrecht</b> · ovnis<br>
+      // <b>recetas</b> · cosmos · código · <b>utrecht</b> · ovnis · <b>juegos</b><br>
       &lt;web&gt; personal · vanilla js · github pages &lt;/web&gt;
     </div>
-    <div class="status-bar" id="status-bar">◉ 6/6 proyectos cargados — press ↵ to explore</div>
+    <div class="status-bar" id="status-bar">◉ 8/8 proyectos cargados — press ↵ to explore</div>
   </header>
 
   <div class="rule"></div>
@@ -736,6 +736,19 @@
       <div class="card-arrow">↗</div>
     </a>
 
+    <a class="card" href="https://zaswear.github.io/gamecalendar/" target="_blank"
+       style="--card-color:#7c6af7">
+      <div>
+        <div class="card-num">[08]</div>
+        <div class="card-icon">🎮</div>
+      </div>
+      <div>
+        <div class="card-name">GameCalendar</div>
+        <div class="card-tag">🕹️ live · videojuegos</div>
+      </div>
+      <div class="card-arrow">↗</div>
+    </a>
+
   </div>
 
   <footer>
@@ -808,7 +821,7 @@ function getSeason() {
 const season = getSeason();
 root.setAttribute('data-season', season);
 document.getElementById('status-bar').textContent =
-  `◉ 6/6 proyectos · ${SEASONS[season].icon} ${SEASONS[season].label} · press ↵ to explore`;
+  `◉ 8/8 proyectos · ${SEASONS[season].icon} ${SEASONS[season].label} · press ↵ to explore`;
 
 /* ===== PARTICLES ===== */
 const canvas = document.getElementById('particle-canvas');
