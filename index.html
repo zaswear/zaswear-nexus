@@ -510,6 +510,31 @@
       color: var(--card-color, var(--green));
       letter-spacing: 0.1em;
       opacity: 0.75;
+      display: flex;
+      align-items: center;
+    }
+
+    .status-indicator {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-left: 6px;
+      background-color: var(--ink-faint);
+      opacity: 0.4;
+      transition: background-color 0.3s, box-shadow 0.3s, opacity 0.3s;
+    }
+
+    .status-indicator.up {
+      background-color: #4a7050;
+      box-shadow: 0 0 6px #4a7050;
+      opacity: 1;
+    }
+
+    .status-indicator.down {
+      background-color: #b84030;
+      box-shadow: 0 0 6px #b84030;
+      opacity: 1;
     }
 
     .card-icon {
@@ -769,7 +794,7 @@
         // <b>recetas</b> · cosmos · código · <b>utrecht</b> · ovnis · <b>juegos</b> · <b>cine</b><br>
         &lt;web&gt; personal · vanilla js · github pages &lt;/web&gt;
       </div>
-      <div class="status-bar" id="status-bar">◉ 9 proyectos · 1 utilidad cargados — press ↵ to explore</div>
+      <div class="status-bar" id="status-bar">◉ 11 proyectos · 1 utilidad cargados — press ↵ to explore</div>
     </header>
 
     <div class="rule"></div>
@@ -886,6 +911,30 @@
         <div class="card-arrow">↗</div>
       </a>
 
+      <a class="card" href="https://cosasdexela.vercel.app" target="_blank" style="--card-color:#b86040">
+        <div>
+          <div class="card-num">[10]</div>
+          <div class="card-icon">🍲</div>
+        </div>
+        <div>
+          <div class="card-name">Cosas de Xela</div>
+          <div class="card-tag">🥘 live · recetas blog</div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </a>
+
+      <a class="card" href="https://checkstatus-five.vercel.app" target="_blank" style="--card-color:#8060a0">
+        <div>
+          <div class="card-num">[11]</div>
+          <div class="card-icon">📡</div>
+        </div>
+        <div>
+          <div class="card-name">CheckStatus</div>
+          <div class="card-tag">📊 live · uptime</div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </a>
+
       <a class="card card-utility" href="https://reclip-icxk.onrender.com" target="_blank" rel="noopener" style="--card-color:#c87850" aria-label="Abrir ReClip">
         <div>
           <div class="card-num">[U1]</div>
@@ -970,7 +1019,7 @@
     const season = getSeason();
     root.setAttribute('data-season', season);
     document.getElementById('status-bar').textContent =
-      `◉ 9 proyectos · 1 utilidad · ${SEASONS[season].icon} ${SEASONS[season].label} · press ↵ to explore`;
+      `◉ 11 proyectos · 1 utilidad · ${SEASONS[season].icon} ${SEASONS[season].label} · press ↵ to explore`;
 
     /* ===== PARTICLES ===== */
     const canvas = document.getElementById('particle-canvas');
@@ -1194,6 +1243,55 @@
     });
     document.getElementById('dismiss-btn').addEventListener('click', () => {
       document.getElementById('install-banner').classList.remove('show');
+    });
+
+    /* ===== DYNAMIC UPTIME STATUS SYNC ===== */
+    async function syncUptime() {
+      const apiEndpoint = "https://checkstatus-five.vercel.app/api/monitors";
+      try {
+        const res = await fetch(apiEndpoint);
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+        const monitors = await res.json();
+        
+        document.querySelectorAll('.card').forEach(card => {
+          const href = card.getAttribute('href');
+          if (!href) return;
+          
+          // Match monitor URL with card href
+          const match = monitors.find(m => {
+            const cleanMUrl = m.url.replace(/\/$/, "").toLowerCase();
+            const cleanHref = href.replace(/\/$/, "").toLowerCase();
+            return cleanMUrl.includes(cleanHref) || cleanHref.includes(cleanMUrl);
+          });
+          
+          if (match) {
+            let indicator = card.querySelector('.status-indicator');
+            if (!indicator) {
+              const numEl = card.querySelector('.card-num');
+              if (numEl) {
+                indicator = document.createElement('span');
+                indicator.className = 'status-indicator';
+                numEl.appendChild(indicator);
+              }
+            }
+            
+            if (indicator) {
+              const isUp = match.active && match.consecutiveFailures === 0;
+              indicator.className = `status-indicator ${isUp ? 'up' : 'down'}`;
+              indicator.title = isUp 
+                ? `Online · Latencia: ${match.lastLatencyMs || 'N/A'}ms · Estado: ${match.lastStatus || 200}` 
+                : `Offline · Fallos: ${match.consecutiveFailures} · Estado: ${match.lastStatus || 'ERR'}`;
+            }
+          }
+        });
+      } catch (err) {
+        console.warn("Could not load uptime statuses:", err);
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      syncUptime();
+      setInterval(syncUptime, 5 * 60 * 1000); // 5 min interval
     });
 
   </script>

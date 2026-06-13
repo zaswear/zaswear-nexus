@@ -20,6 +20,8 @@ Portfolio personal de proyectos web — un launcher minimalista instalable como 
 | 07 | [Tengo Hambre](https://zaswear.github.io/tengohambre/) | live · GitHub Pages | Descubridor de restaurantes | zaswear.github.io/tengohambre |
 | 08 | [GameCalendar](https://gamecalendar-iota.vercel.app/) | live · Vercel | Lanzamientos de videojuegos — IGDB + Steam | gamecalendar-iota.vercel.app |
 | 09 | [Director's Cut](https://directorscut-five.vercel.app) | live · Vercel | Base de datos personal de películas con PostgreSQL | directorscut-five.vercel.app |
+| 10 | [Cosas de Xela](https://cosasdexela.vercel.app) | live · Vercel | Blog de recetas de cocina tradicional gallega | cosasdexela.vercel.app |
+| 11 | [CheckStatus](https://checkstatus-five.vercel.app) | live · Vercel | Monitor de disponibilidad (uptime robot personal) | checkstatus-five.vercel.app |
 | U1 | ReClip | utilidad · Render | Descargador de vídeos y música (panel integrado) | reclip-icxk.onrender.com |
 
 ---
