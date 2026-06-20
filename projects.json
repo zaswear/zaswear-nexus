@@ -133,9 +133,9 @@
     "id": "mdmakeit",
     "name": "MDMakeIt",
     "icon": "📝",
-    "url": "http://localhost:3003",
+    "url": "https://mdmakeit.onrender.com",
     "color": "#4a7050",
-    "tag": "⚙️ local · doc to md",
+    "tag": "📄 live · doc a md",
     "category": "herramientas",
     "type": "utility"
   },
