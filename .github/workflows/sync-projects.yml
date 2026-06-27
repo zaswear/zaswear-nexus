@@ -1,0 +1,41 @@
+name: Sync projects
+
+# Regenera portal/projects.json desde Vercel (prioritario) + GitHub Pages.
+# Añade automáticamente una tarjeta por cada repo con web que no esté ya en el
+# portal, sin tocar las tarjetas curadas a mano.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # cada día a las 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Regenerar projects.json
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/sync-projects.mjs
+
+      - name: Commit si hay cambios
+        run: |
+          if [[ -n "$(git status --porcelain portal/projects.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add portal/projects.json
+            git commit -m "chore: sync projects.json (auto)"
+            git push
+          else
+            echo "Sin cambios en projects.json."
+          fi
