@@ -162,5 +162,17 @@
     "type": "project",
     "size": "md",
     "desc": "Importa recetas desde cualquier web, las deja en limpio y en español, y las exporta a Markdown, Notion, CSV o JSON."
+  },
+  {
+    "id": "enigma",
+    "name": "ENIGMA",
+    "icon": "🛸",
+    "url": "https://enigma-zaswears-projects.vercel.app",
+    "color": "#46e0b0",
+    "tag": "🛸 live · UAP/UFO",
+    "category": "cosmos",
+    "type": "project",
+    "size": "md",
+    "desc": "Índice global de desclasificaciones oficiales UAP/UFO: PURSUE (EE.UU.), Arquivo Nacional (Brasil) y MOD (Japón), con mapa de incidentes y buscador."
   }
 ]
