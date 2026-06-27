@@ -150,5 +150,17 @@
     "type": "project",
     "size": "lg",
     "desc": "Lector de feeds RSS minimalista con estética de periódico retro-futurista y motor de traducción automática al español."
+  },
+  {
+    "id": "recetario",
+    "name": "Recetario",
+    "icon": "📖",
+    "url": "https://recetario-rosy.vercel.app/",
+    "color": "#d08a55",
+    "tag": "🍳 live · recetas",
+    "category": "comida",
+    "type": "project",
+    "size": "md",
+    "desc": "Importa recetas desde cualquier web, las deja en limpio y en español, y las exporta a Markdown, Notion, CSV o JSON."
   }
 ]
