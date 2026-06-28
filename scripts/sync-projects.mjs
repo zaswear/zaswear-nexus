@@ -23,6 +23,10 @@ const TEAM = process.env.VERCEL_TEAM_ID || "team_ugGRA7XgtQmfoR2cFWmNcFO2";
 const GH = process.env.GITHUB_TOKEN || process.env.GH_PAT || "";
 const GH_USER = process.env.GH_USER || "zaswear";
 const SELF = `${GH_USER}/zaswear-nexus`.toLowerCase();
+const IGNORED_REPOS = new Set([
+  SELF,
+  `${GH_USER}/visitanlconmigo`.toLowerCase()
+]);
 
 const PALETTE = ["#d08a55", "#46e0b0", "#6c8cff", "#e0617f", "#b58bd6", "#5bb3c9", "#e0a93e", "#7bbf86"];
 const hash = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
@@ -96,7 +100,7 @@ async function main() {
   const autos = [];
   for (const c of byKey.values()) {
     const key = c.repoFull.toLowerCase();
-    if (key === SELF) continue;
+    if (IGNORED_REPOS.has(key)) continue;
     const repoName = c.name.toLowerCase();
     if (manualKeys.has(key) || manualKeys.has(repoName) || manualKeys.has("host:" + host(c.url))) continue;
     if (!(await reachable(c.url))) { console.warn(`· descartado (no responde): ${c.repoFull} ${c.url}`); continue; }
