@@ -1,0 +1,13 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "overused-font",
+      "cream-palette",
+      "wide-tracking",
+      "tiny-text",
+      "flat-type-hierarchy"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": []
+  }
+}

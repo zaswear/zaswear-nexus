@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zaswear-nexus-portal-v1';
+const CACHE_NAME = 'zaswear-nexus-portal-v202606282034';
 const ASSETS = [
   '/portal/index.html',
   '/portal/manifest.json',
