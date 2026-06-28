@@ -25,7 +25,8 @@ const GH_USER = process.env.GH_USER || "zaswear";
 const SELF = `${GH_USER}/zaswear-nexus`.toLowerCase();
 const IGNORED_REPOS = new Set([
   SELF,
-  `${GH_USER}/visitanlconmigo`.toLowerCase()
+  `${GH_USER}/visitanlconmigo`.toLowerCase(),
+  `${GH_USER}/gamelauncher`.toLowerCase()
 ]);
 
 const PALETTE = ["#d08a55", "#46e0b0", "#6c8cff", "#e0617f", "#b58bd6", "#5bb3c9", "#e0a93e", "#7bbf86"];

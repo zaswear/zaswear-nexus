@@ -216,19 +216,5 @@
     "repo": "zaswear/frontier-radar",
     "source": "vercel",
     "auto": true
-  },
-  {
-    "id": "gamelauncher",
-    "name": "GameLauncher",
-    "icon": "▲",
-    "url": "https://game-launcher-pi.vercel.app",
-    "color": "#6c8cff",
-    "tag": "▲ auto · vercel",
-    "category": "auto",
-    "type": "project",
-    "size": "sm",
-    "repo": "zaswear/GameLauncher",
-    "source": "vercel",
-    "auto": true
   }
 ]
