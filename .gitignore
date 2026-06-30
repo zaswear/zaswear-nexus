@@ -7,7 +7,9 @@ Cargo.lock.bak
 node_modules/
 dist/
 .next/
+.turbo/
 *.log
+tsconfig.tsbuildinfo
 
 # Python
 __pycache__/

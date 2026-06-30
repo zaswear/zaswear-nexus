@@ -1,4 +1,4 @@
-// Sincroniza portal/projects.json con los repos que tienen web desplegada.
+// Sincroniza src/data/projects.json con los repos que tienen web desplegada.
 //
 // Fuentes: Vercel (prioritaria) y GitHub Pages. Añade automáticamente una
 // tarjeta por cada repo con web que aún no esté en el portal, sin tocar las
@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const FILE = join(ROOT, "portal/projects.json");
+const FILE = join(ROOT, "src/data/projects.json");
 const DRY = process.argv.includes("--dry-run");
 
 const VT = process.env.VERCEL_TOKEN;
@@ -130,7 +130,7 @@ async function main() {
 
   if (DRY) { console.log("(--dry-run: no se escribió.)"); return; }
   writeFileSync(FILE, JSON.stringify(result, null, 2) + "\n");
-  console.log(`✅ portal/projects.json: ${result.length} tarjetas.`);
+  console.log(`✅ src/data/projects.json: ${result.length} tarjetas.`);
 }
 
 main().catch((e) => { console.error("❌", e.message); process.exit(1); });
