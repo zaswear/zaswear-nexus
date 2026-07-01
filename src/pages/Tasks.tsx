@@ -91,7 +91,7 @@ export default function Tasks() {
         .tk-grid { display: grid; gap: 30px; grid-template-columns: 1fr; }
         @media (min-width: 940px) { .tk-grid { grid-template-columns: 1.2fr 1fr; align-items: start; } }
         .tk-filters { display: flex; gap: 8px; margin-bottom: 14px; }
-        .chip { font-family: "IBM Plex Mono", monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
+        .chip { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
           min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-hi); background: var(--surface); color: var(--text-mid);
           transition: color .15s, border-color .15s, background .15s, transform .1s; }
         .chip:hover { color: var(--text); border-color: var(--accent); }

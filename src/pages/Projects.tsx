@@ -68,7 +68,7 @@ function Chip({ on, onClick, label, n }: { on: boolean; onClick: () => void; lab
       {label} <span className="chip-n">{n}</span>
       <style>{`
         .chip {
-          font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+          font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
           min-height: 44px; padding: 8px 14px; display: inline-flex; align-items: center; gap: 7px;
           border-radius: 999px; border: 1px solid var(--line-hi); background: var(--surface); color: var(--text-mid);
           transition: color .15s var(--ease), border-color .15s, background .15s, transform .1s;

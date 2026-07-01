@@ -34,7 +34,16 @@ export default function Layout() {
     <div className="shell">
       <aside className="sidebar">
         <div className="side-brand">
-          <span className="serif side-mark">N<em>e</em>xus</span>
+          <NavLink to="/" end className="brand-lock" aria-label="ZaswearProjects — Inicio">
+            <svg className="brand-mark" viewBox="0 0 32 32" width="30" height="30" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="30" height="30" rx="8" fill="var(--surface)" stroke="var(--line-hi)" />
+              <path d="M9 10 H23 L10 22 H23" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="23" cy="10" r="3.1" fill="var(--accent)" />
+            </svg>
+            <span className="brand-word">
+              <b>Zaswear</b><span>Projects</span>
+            </span>
+          </NavLink>
           <span className="mono side-sub">workspace</span>
         </div>
         <nav className="side-nav" aria-label="Principal">
@@ -69,9 +78,12 @@ export default function Layout() {
           background: color-mix(in oklch, var(--bg-deep) 60%, transparent);
         }
         .side-brand { display: flex; flex-direction: column; padding: 0 8px 18px; }
-        .side-mark { font-size: 26px; line-height: 1; }
-        .side-mark em { color: var(--accent); font-style: italic; }
-        .side-sub { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
+        .brand-lock { display: flex; align-items: center; gap: 10px; color: var(--text); }
+        .brand-mark { flex-shrink: 0; }
+        .brand-word { font-family: var(--font-display); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; line-height: 1; }
+        .brand-word b { font-weight: 700; }
+        .brand-word span { color: var(--text-dim); font-weight: 500; }
+        .side-sub { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); margin: 8px 0 0 40px; }
         .side-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
         .side-link {
           display: flex; align-items: center; gap: 11px; min-height: 44px; padding: 0 12px;
